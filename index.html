@@ -51,33 +51,41 @@
       <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm">
         <div class="flex flex-wrap items-center gap-2 mb-3">
           <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-amber-100 text-amber-800">単元 13〜16 対応</span>
-          <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-slate-100 text-slate-700">全20問・4択</span>
+          <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-slate-100 text-slate-700">全48問プール・毎回シャッフル</span>
         </div>
         <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2">出題コースを選ぼう</h2>
         <p class="text-sm text-slate-600 leading-relaxed mb-5">
           「動詞とは・活用形」「五段活用と音便」「上一段・下一段・カ変・サ変」「自動詞・他動詞・可能動詞・補助動詞」のポイントをクイズで確認できます。
         </p>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
           <button type="button" data-mode="all" class="mode-card text-left p-4 rounded-xl border-2 border-amber-400 bg-amber-50/70 hover:bg-amber-50 transition">
-            <div class="flex items-center justify-between mb-1">
-              <span class="font-bold text-slate-900">全範囲まとめ（20問）</span>
-              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-amber-500 text-white">おすすめ</span>
+            <div class="flex items-center justify-between gap-1 mb-1">
+              <span class="font-bold text-slate-900 text-sm sm:text-base">全範囲ランダム（20問）</span>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-amber-500 text-white shrink-0">おすすめ</span>
             </div>
-            <p class="text-xs text-slate-600">単元13〜16のすべてから順番に出題</p>
+            <p class="text-xs text-slate-600">全48問から毎回ランダムに20問出題</p>
           </button>
 
           <button type="button" data-mode="random10" class="mode-card text-left p-4 rounded-xl border border-slate-200 bg-white hover:border-amber-300 hover:bg-amber-50/30 transition">
-            <div class="flex items-center justify-between mb-1">
-              <span class="font-bold text-slate-900">ランダム実力テスト（10問）</span>
-              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-200 text-slate-700">シャッフル</span>
+            <div class="flex items-center justify-between gap-1 mb-1">
+              <span class="font-bold text-slate-900 text-sm sm:text-base">サクッと実力テスト（10問）</span>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-200 text-slate-700 shrink-0">10問</span>
             </div>
-            <p class="text-xs text-slate-600">全20問からランダムに10問を出題</p>
+            <p class="text-xs text-slate-600">全48問からランダムに10問を出題</p>
+          </button>
+
+          <button type="button" data-mode="all48" class="mode-card text-left p-4 rounded-xl border border-slate-200 bg-white hover:border-amber-300 hover:bg-amber-50/30 transition">
+            <div class="flex items-center justify-between gap-1 mb-1">
+              <span class="font-bold text-slate-900 text-sm sm:text-base">全問制覇モード（48問）</span>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-900 text-white shrink-0">全問</span>
+            </div>
+            <p class="text-xs text-slate-600">全48問をランダムな順番でコンプリート</p>
           </button>
         </div>
 
         <div class="border-t border-slate-100 pt-4">
-          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">単元別に練習する（各5問）</p>
+          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">単元別に練習する（各12問から毎回5問をランダム出題）</p>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             <button type="button" data-mode="unit13" class="mode-card text-left p-3.5 rounded-xl border border-slate-200 hover:border-sky-400 hover:bg-sky-50/40 transition">
               <span class="inline-block text-xs font-bold text-sky-700 mb-0.5">13 動詞(1)</span>
@@ -210,7 +218,7 @@
 
   <script>
     const QUESTIONS = [
-      // 13 動詞(1)
+      // 13 動詞(1) 動詞とは・活用形・活用の種類 (12問)
       {
         id: 1,
         unit: 'unit13',
@@ -254,12 +262,75 @@
         question: '「ある」「いる」は、動詞の働きのうち主にどれを表しますか？',
         options: ['動作（どうする）', '作用（どうなる）', '存在（ある）', '命令（しろ）'],
         answer: 2,
-        explanation: '「机がある」「犬がいる」のように、「ある」「いる」は存在を表します。ちなみに「落ちる」「降る」は作用、「着る」「書く」は動作です。'
+        explanation: '「机がある」「犬がいる」のように、「ある」「いる」は存在を表します。「落ちる」「降る」は作用、「着る」「書く」は動作です。'
       },
-
-      // 14 動詞(2)
       {
         id: 6,
+        unit: 'unit13',
+        unitLabel: '13 動詞(1)',
+        question: '次の単語のうち、「動詞」であるものはどれですか？',
+        options: ['読書', '正直だ', '拾う', '登山'],
+        answer: 2,
+        explanation: '「拾う」はウ段で言い切り、動作を表す動詞です。「読書」「登山」は名詞（体言）、「正直だ」は形容動詞です。'
+      },
+      {
+        id: 7,
+        unit: 'unit13',
+        unitLabel: '13 動詞(1)',
+        question: '「走れば、間に合う」の下線部「走れ」の活用形は何ですか？',
+        options: ['未然形', '連用形', '仮定形', '命令形'],
+        answer: 2,
+        explanation: '「〜ば」に続く形は「仮定形」です。「もし走れば」という仮定の意味を表します。'
+      },
+      {
+        id: 8,
+        unit: 'unit13',
+        unitLabel: '13 動詞(1)',
+        question: '「自転車に乗って行く」の「乗っ（て）」の活用形は何ですか？',
+        options: ['未然形', '連用形', '終止形', '連体形'],
+        answer: 1,
+        explanation: '「〜ます」「〜て」「〜た」に続く形は「連用形」です。'
+      },
+      {
+        id: 9,
+        unit: 'unit13',
+        unitLabel: '13 動詞(1)',
+        question: '「もうすぐ雨が降る」のように、自然の現象や変化を表す動詞の働きは何といいますか？',
+        options: ['動作', '作用', '存在', '状態'],
+        answer: 1,
+        explanation: '「葉が落ちる」「雨が降る」のように「どうなる」を表す働きを「作用」といいます。'
+      },
+      {
+        id: 10,
+        unit: 'unit13',
+        unitLabel: '13 動詞(1)',
+        question: '辞書で動詞を引くときの形（言い切る形）を何といいますか？',
+        options: ['未然形', '連用形', '終止形', '連体形'],
+        answer: 2,
+        explanation: '文を言い切る形、辞書で引くときの形（基本形）を「終止形」といいます。'
+      },
+      {
+        id: 11,
+        unit: 'unit13',
+        unitLabel: '13 動詞(1)',
+        question: '「明日いっしょに遊ぼう」の「遊ぼ（う）」の活用形は何ですか？',
+        options: ['未然形', '連用形', '終止形', '命令形'],
+        answer: 0,
+        explanation: '「〜ない」だけでなく「〜う・〜よう」に続く形も「未然形」です。'
+      },
+      {
+        id: 12,
+        unit: 'unit13',
+        unitLabel: '13 動詞(1)',
+        question: '「疲れて足が動かない」の「動か（ない）」の活用形は何ですか？',
+        options: ['未然形', '連用形', '仮定形', '命令形'],
+        answer: 0,
+        explanation: '打ち消しの「〜ない」に続く形は「未然形」です。'
+      },
+
+      // 14 動詞(2) 五段活用と音便 (12問)
+      {
+        id: 13,
         unit: 'unit14',
         unitLabel: '14 動詞(2)',
         question: '動詞に「ない」を付けてみたとき、「ない」の直前が何段の音になれば「五段活用」ですか？',
@@ -268,7 +339,7 @@
         explanation: '「書かない（か＝ア段）」「運ばない（ば＝ア段）」のように、「ない」の上がア段の音なら五段活用です。'
       },
       {
-        id: 7,
+        id: 14,
         unit: 'unit14',
         unitLabel: '14 動詞(2)',
         question: '動詞「走る」は何行何段活用ですか？',
@@ -277,7 +348,7 @@
         explanation: '「走らない・走ります・走る・走るとき・走れば・走れ」とラ行の五段にわたって変化するので「ラ行五段活用」です。'
       },
       {
-        id: 8,
+        id: 15,
         unit: 'unit14',
         unitLabel: '14 動詞(2)',
         question: '「泣く」＋「て」が「泣いて」に変化するような音便を何といいますか？',
@@ -286,16 +357,16 @@
         explanation: '「泣き＋て → 泣いて」のように音が「い」に変わるのがイ音便です。動詞の音便は五段活用の動詞だけに起こります。'
       },
       {
-        id: 9,
+        id: 16,
         unit: 'unit14',
         unitLabel: '14 動詞(2)',
         question: '「走った」「走って」のように、つまる音「っ」に変わる音便を何といいますか？',
         options: ['イ音便', '促音便', '撥音便', '鼻音便'],
         answer: 1,
-        explanation: 'つまる音「っ」になるのが「促音便」です。ちなみに「読んだ」のようにはねる音「ん」になるのは「撥音便」です。'
+        explanation: 'つまる音「っ」になるのが「促音便」です。「読んだ」のようにはねる音「ん」になるのは「撥音便」です。'
       },
       {
-        id: 10,
+        id: 17,
         unit: 'unit14',
         unitLabel: '14 動詞(2)',
         question: '次のうち、「撥音便（はつおんびん）」を起こしているものはどれですか？',
@@ -303,10 +374,73 @@
         answer: 0,
         explanation: '「読み＋た → 読んだ」のように、連用形に「た(だ)・て(で)・ても(でも)」が付いて「ん」に変化するのが撥音便です。'
       },
-
-      // 15 動詞(3)
       {
-        id: 11,
+        id: 18,
+        unit: 'unit14',
+        unitLabel: '14 動詞(2)',
+        question: '動詞「飲む」は何行何段活用ですか？',
+        options: ['マ行五段活用', 'マ行上一段活用', 'マ行下一段活用', 'ナ行五段活用'],
+        answer: 0,
+        explanation: '「飲まない（ま＝ア段）」となるので五段活用。活用語尾が「ま・み・む・め・も」とマ行で変化するため「マ行五段活用」です。'
+      },
+      {
+        id: 19,
+        unit: 'unit14',
+        unitLabel: '14 動詞(2)',
+        question: '動詞「言う」の連用形に「た」が続くとどうなりますか？',
+        options: ['言いた（イ音便）', '言った（促音便）', '言んだ（撥音便）', '言わた（音便なし）'],
+        answer: 1,
+        explanation: '「言う（ワ行五段）」の連用形「言い」＋「た」は、つまる音「言った」（促音便）になります。'
+      },
+      {
+        id: 20,
+        unit: 'unit14',
+        unitLabel: '14 動詞(2)',
+        question: '動詞の音便（イ音便・促音便・撥音便）が起こるのは、どの活用の動詞だけですか？',
+        options: ['五段活用だけ', '上一段活用だけ', '下一段活用だけ', 'すべての動詞'],
+        answer: 0,
+        explanation: '動詞の音便は「五段活用の動詞だけ」に起こります。'
+      },
+      {
+        id: 21,
+        unit: 'unit14',
+        unitLabel: '14 動詞(2)',
+        question: '「泳ぐ」＋「て」が「泳いで」になるとき、何音便といいますか？',
+        options: ['イ音便', '促音便', '撥音便', '音便ではない'],
+        answer: 0,
+        explanation: '「泳ぎ＋て → 泳いで」のように「い」の音に変わるため「イ音便」です（カ行・ガ行の五段活用で起こります）。'
+      },
+      {
+        id: 22,
+        unit: 'unit14',
+        unitLabel: '14 動詞(2)',
+        question: '「買う」＋「て」が「買って」になるとき、何音便といいますか？',
+        options: ['イ音便', '促音便', '撥音便', '音便ではない'],
+        answer: 1,
+        explanation: '「買い＋て → 買って」のように「っ」に変わるため「促音便」です。'
+      },
+      {
+        id: 23,
+        unit: 'unit14',
+        unitLabel: '14 動詞(2)',
+        question: '次のうち、「五段活用」の動詞はどれですか？',
+        options: ['見る', '伝える', '聞く', '起きる'],
+        answer: 2,
+        explanation: '「ない」を付けると「聞かない（か＝ア段）」となる「聞く」が五段活用です。「見ない（イ段）」「伝えない（エ段）」「起きない（イ段）」は一段活用です。'
+      },
+      {
+        id: 24,
+        unit: 'unit14',
+        unitLabel: '14 動詞(2)',
+        question: '「聞く」を「聞こう」とするとき、語尾「こ」は何形ですか？',
+        options: ['未然形', '連用形', '仮定形', '命令形'],
+        answer: 0,
+        explanation: '「〜う」に続くオ段の音（聞こう・飲もう・走ろう）も「未然形」です。'
+      },
+
+      // 15 動詞(3) 上一段・下一段・カ変・サ変 (12問)
+      {
+        id: 25,
         unit: 'unit15',
         unitLabel: '15 動詞(3)',
         question: '「信じる」の活用の種類として正しいものはどれですか？',
@@ -315,7 +449,7 @@
         explanation: '「信じない（じ＝イ段）」となり、イ段の音「じ」だけで活用するため「ザ行上一段活用」です。'
       },
       {
-        id: 12,
+        id: 26,
         unit: 'unit15',
         unitLabel: '15 動詞(3)',
         question: '「助ける」の活用の種類として正しいものはどれですか？',
@@ -324,7 +458,7 @@
         explanation: '「助けない（け＝エ段）」となり、エ段の音「け」だけで活用するため「カ行下一段活用」です。'
       },
       {
-        id: 13,
+        id: 27,
         unit: 'unit15',
         unitLabel: '15 動詞(3)',
         question: '次のうち、「語幹と語尾の区別がない」動詞の組み合わせはどれですか？',
@@ -333,7 +467,7 @@
         explanation: '「見る・着る・似る」（上一段）、「出る・寝る・得る」（下一段）や「来る」（カ変）、「する」（サ変）は語幹と語尾の区別がありません。'
       },
       {
-        id: 14,
+        id: 28,
         unit: 'unit15',
         unitLabel: '15 動詞(3)',
         question: 'カ行変格活用（カ変）にあてはまる動詞はどれですか？',
@@ -342,7 +476,7 @@
         explanation: 'カ行変格活用は「来る（こ・き・く・く・くれ・こい）」の一語だけです。'
       },
       {
-        id: 15,
+        id: 29,
         unit: 'unit15',
         unitLabel: '15 動詞(3)',
         question: '次のうち、サ行変格活用（サ変）の活用をするものはどれですか？',
@@ -350,10 +484,78 @@
         answer: 2,
         explanation: 'サ変は「する」一語のほか、「運動する」「うわさする」「クリックする」のような「〜する」の形の複合動詞も同じ活用をします。'
       },
-
-      // 16 動詞(4)
       {
-        id: 16,
+        id: 30,
+        unit: 'unit15',
+        unitLabel: '15 動詞(3)',
+        question: '次のうち、「上一段活用」の動詞はどれですか？',
+        options: ['答える', '開く', '閉じる', '受ける'],
+        answer: 2,
+        explanation: '「閉じない（じ＝イ段）」となる「閉じる」がザ行上一段活用です。「答えない」「受けない」は下一段、「開かない」は五段活用です。'
+      },
+      {
+        id: 31,
+        unit: 'unit15',
+        unitLabel: '15 動詞(3)',
+        question: '「着る」と「切る」について、それぞれの活用の種類の正しい組み合わせは？',
+        options: [
+          '着る（上一段）／ 切る（五段）',
+          '着る（五段）／ 切る（上一段）',
+          '両方とも上一段活用',
+          '両方とも五段活用'
+        ],
+        answer: 0,
+        explanation: '「着ない（き＝イ段）」なので「着る」はカ行上一段活用、「切らない（ら＝ア段）」なので「切る」はラ行五段活用です。'
+      },
+      {
+        id: 32,
+        unit: 'unit15',
+        unitLabel: '15 動詞(3)',
+        question: 'カ行変格活用「来る」の命令形として正しいものはどれですか？',
+        options: ['くれ', 'きろ', 'こい', 'くよ'],
+        answer: 2,
+        explanation: '「来る」は「こ・き・く・く・くれ・こい」と活用するため、命令形は「こい」です。'
+      },
+      {
+        id: 33,
+        unit: 'unit15',
+        unitLabel: '15 動詞(3)',
+        question: '「次の機会に受けよう」の「受け（よう）」は何行何段活用ですか？',
+        options: ['カ行上一段活用', 'カ行下一段活用', 'カ行五段活用', 'カ行変格活用'],
+        answer: 1,
+        explanation: '「受けない（け＝エ段）」となるので「カ行下一段活用」です。'
+      },
+      {
+        id: 34,
+        unit: 'unit15',
+        unitLabel: '15 動詞(3)',
+        question: 'サ行変格活用「する」の未然形で、「〜ぬ」「〜ず」に続く形はどれですか？',
+        options: ['し', 'せ', 'さ', 'す'],
+        answer: 1,
+        explanation: 'サ変「する」の未然形は「せ・し・さ」の3つがあり、「せ」は「せぬ・せず」と続きます（「し」は「しない・しよう」、「さ」は「させる・される」）。'
+      },
+      {
+        id: 35,
+        unit: 'unit15',
+        unitLabel: '15 動詞(3)',
+        question: '「あかりが消える」と「あかりを消す」のうち、下一段活用の動詞はどちらですか？',
+        options: ['消える', '消す', 'どちらも下一段活用', 'どちらも五段活用'],
+        answer: 0,
+        explanation: '「消えない（え＝エ段）」となる「消える」がヤ行下一段活用です。「消さない（さ＝ア段）」の「消す」はサ行五段活用です。'
+      },
+      {
+        id: 36,
+        unit: 'unit15',
+        unitLabel: '15 動詞(3)',
+        question: '「すぐ窓を閉めろ」の「閉めろ」の活用形は何ですか？',
+        options: ['未然形', '仮定形', '命令形', '連体形'],
+        answer: 2,
+        explanation: '一段活用の命令形は語尾に「ろ」または「よ」が付きます（「閉めろ」「閉めよ」）。'
+      },
+
+      // 16 動詞(4) 自動詞・他動詞・可能動詞・補助動詞 (12問)
+      {
+        id: 37,
         unit: 'unit16',
         unitLabel: '16 動詞(4)',
         question: '次の文の動詞のうち、「他動詞」が使われているものはどれですか？',
@@ -362,7 +564,7 @@
         explanation: '「何を」という動作の対象（「〜を」）を必要とするのが他動詞です。「戸を開ける」は「戸を」があるため他動詞。他は自動詞です。'
       },
       {
-        id: 17,
+        id: 38,
         unit: 'unit16',
         unitLabel: '16 動詞(4)',
         question: '「風が吹く」と「笛を吹く」のように、同じ形でも使われ方で自動詞・他動詞の両方になるものがあります。この2つの正しい組み合わせは？',
@@ -376,7 +578,7 @@
         explanation: '「風が吹く」は「何を」が不要なので自動詞、「笛を吹く」は「笛を」という対象があるので他動詞です。'
       },
       {
-        id: 18,
+        id: 39,
         unit: 'unit16',
         unitLabel: '16 動詞(4)',
         question: '「泳げる」「書ける」などの「可能動詞」について、正しい説明はどれですか？',
@@ -390,7 +592,7 @@
         explanation: '可能動詞は五段活用の動詞をもとにしてできた下一段活用の動詞で、命令形がありません。'
       },
       {
-        id: 19,
+        id: 40,
         unit: 'unit16',
         unitLabel: '16 動詞(4)',
         question: '次のうち、文法上の「可能動詞」ではない（五段活用から作られていない）ものはどれですか？',
@@ -399,10 +601,10 @@
         explanation: '「見る」（上一段）・「出る」（下一段）・「来る」（カ変）は五段活用ではないため可能動詞を作れません。「見れる」「出れる」「来れる」は可能動詞ではありません。'
       },
       {
-        id: 20,
+        id: 41,
         unit: 'unit16',
         unitLabel: '16 動詞(4)',
-        question: '次の文のうち、下線部に相当する動詞が「補助動詞（形式動詞）」として使われているものはどれですか？',
+        question: '次の文のうち、【 】の動詞が「補助動詞（形式動詞）」として使われているものはどれですか？',
         options: [
           'ここに原因が【ある】。',
           'これが原因で【ある】。',
@@ -410,7 +612,70 @@
           '明日、学校へ【いく】。'
         ],
         answer: 1,
-        explanation: '「これが原因である」の「ある」は「存在する」という実質的な意味をもたず、上の語「原因で」を補助しているため補助動詞です（同様に「歩いていく」の「いく」も補助動詞）。'
+        explanation: '「これが原因である」の「ある」は「存在する」という実質的な意味をもたず、上の語「原因で」を補助しているため補助動詞です。'
+      },
+      {
+        id: 42,
+        unit: 'unit16',
+        unitLabel: '16 動詞(4)',
+        question: '自動詞「流れる」に対応する「他動詞」はどれですか？',
+        options: ['流す', '流せる', '流る', '流れさせる'],
+        answer: 0,
+        explanation: '「川が流れる（自動詞）」に対して、「水を流す（他動詞）」が対応する他動詞です。'
+      },
+      {
+        id: 43,
+        unit: 'unit16',
+        unitLabel: '16 動詞(4)',
+        question: '自動詞「届く」に対応する「他動詞」はどれですか？',
+        options: ['届ける', '届かせる', '届かれる', '届けるれる'],
+        answer: 0,
+        explanation: '「手紙が届く（自動詞）」に対して、「荷物を届ける（他動詞）」が対応します。'
+      },
+      {
+        id: 44,
+        unit: 'unit16',
+        unitLabel: '16 動詞(4)',
+        question: '「大勢の人を集める」と「大勢の人が集まる」のうち、自動詞はどちらですか？',
+        options: ['集まる', '集める', 'どちらも自動詞', 'どちらも他動詞'],
+        answer: 0,
+        explanation: '「集まる」は「〜を」を必要としない自動詞、「集める」は「人を」を必要とする他動詞です。'
+      },
+      {
+        id: 45,
+        unit: 'unit16',
+        unitLabel: '16 動詞(4)',
+        question: '「彼は歩いていく」の「いく」は、本動詞と補助動詞のどちらですか？',
+        options: ['本動詞（実質的な意味がある）', '補助動詞（形式動詞）', '可能動詞', '他動詞'],
+        answer: 1,
+        explanation: '「彼はそこにいく」の「いく」は「行く」という本来の意味の本動詞ですが、「歩いていく」の「いく」は上の「歩いて」を補助する補助動詞です。'
+      },
+      {
+        id: 46,
+        unit: 'unit16',
+        unitLabel: '16 動詞(4)',
+        question: '次のうち、可能動詞「取れる」のもとになっている動詞はどれですか？',
+        options: ['取る（五段活用）', '取らせる', '撮れる', '取りる'],
+        answer: 0,
+        explanation: '「取れる」は五段活用の動詞「取る」をもとにしてできた可能動詞（下一段活用）です。'
+      },
+      {
+        id: 47,
+        unit: 'unit16',
+        unitLabel: '16 動詞(4)',
+        question: '「人が笑う」と「人を笑う」のように、同じ形の動詞「笑う」はどちらが他動詞ですか？',
+        options: ['人が笑う', '人を笑う', 'どちらも他動詞', 'どちらも自動詞'],
+        answer: 1,
+        explanation: '「〜を」という動作の対象が上にある「人を笑う」が他動詞、「人が笑う」は自動詞です。'
+      },
+      {
+        id: 48,
+        unit: 'unit16',
+        unitLabel: '16 動詞(4)',
+        question: '「この料理を食べてみる」の「みる」のように、本来の「見る」の意味を失って上の語を補助する動詞を何といいますか？',
+        options: ['可能動詞', '補助動詞', '自動詞', '変格活用動詞'],
+        answer: 1,
+        explanation: '実質的な意味をもたず、上の語を補助するため形式的に使われる動詞を「補助動詞（形式動詞）」といいます。'
       }
     ];
 
@@ -475,17 +740,31 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    function prepareQuestion(q) {
+      const indexed = q.options.map((text, idx) => ({ text, isCorrect: idx === q.answer }));
+      const shuffled = shuffleArray(indexed);
+      return {
+        ...q,
+        options: shuffled.map((o) => o.text),
+        answer: shuffled.findIndex((o) => o.isCorrect)
+      };
+    }
+
     function startQuiz(mode, customList = null) {
       currentMode = mode;
+      let selected = [];
       if (customList) {
-        quizList = customList;
+        selected = shuffleArray(customList);
       } else if (mode === 'all') {
-        quizList = [...QUESTIONS];
+        selected = shuffleArray(QUESTIONS).slice(0, 20);
+      } else if (mode === 'all48') {
+        selected = shuffleArray(QUESTIONS);
       } else if (mode === 'random10') {
-        quizList = shuffleArray(QUESTIONS).slice(0, 10);
+        selected = shuffleArray(QUESTIONS).slice(0, 10);
       } else {
-        quizList = QUESTIONS.filter((q) => q.unit === mode);
+        selected = shuffleArray(QUESTIONS.filter((q) => q.unit === mode)).slice(0, 5);
       }
+      quizList = selected.map(prepareQuestion);
 
       currentIndex = 0;
       score = 0;
