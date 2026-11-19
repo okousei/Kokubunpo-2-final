@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>中学国語 動詞マスタークイズ（13〜16）</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+    .option-btn {
+      transition: transform 0.12s ease, border-color 0.15s ease, background-color 0.15s ease;
+    }
+    .option-btn:hover:not(:disabled) {
+      transform: translateY(-1px);
+    }
+    .fade-in {
+      animation: fadeIn 0.2s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-10">
+    <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <span class="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-amber-500 text-white font-bold text-base shrink-0 shadow-sm">動</span>
+        <div class="min-w-0">
+          <h1 class="text-base sm:text-lg font-bold text-slate-900 truncate">中学国語 動詞マスタークイズ</h1>
+          <p class="text-xs text-slate-500 truncate">動詞の活用・音便・自他・可能・補助動詞</p>
+        </div>
+      </div>
+      <button id="homeBtn" type="button" class="hidden text-xs sm:text-sm font-medium px-3 py-1.5 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-100 shrink-0">
+        メニューへ
+      </button>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-3xl w-full mx-auto px-4 py-6 sm:py-8">
+    <!-- Start Screen -->
+    <section id="startScreen" class="fade-in space-y-6">
+      <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm">
+        <div class="flex flex-wrap items-center gap-2 mb-3">
+          <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-amber-100 text-amber-800">単元 13〜16 対応</span>
+          <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-slate-100 text-slate-700">全20問・4択</span>
+        </div>
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2">出題コースを選ぼう</h2>
+        <p class="text-sm text-slate-600 leading-relaxed mb-5">
+          「動詞とは・活用形」「五段活用と音便」「上一段・下一段・カ変・サ変」「自動詞・他動詞・可能動詞・補助動詞」のポイントをクイズで確認できます。
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
+          <button type="button" data-mode="all" class="mode-card text-left p-4 rounded-xl border-2 border-amber-400 bg-amber-50/70 hover:bg-amber-50 transition">
+            <div class="flex items-center justify-between mb-1">
+              <span class="font-bold text-slate-900">全範囲まとめ（20問）</span>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-amber-500 text-white">おすすめ</span>
+            </div>
+            <p class="text-xs text-slate-600">単元13〜16のすべてから順番に出題</p>
+          </button>
+
+          <button type="button" data-mode="random10" class="mode-card text-left p-4 rounded-xl border border-slate-200 bg-white hover:border-amber-300 hover:bg-amber-50/30 transition">
+            <div class="flex items-center justify-between mb-1">
+              <span class="font-bold text-slate-900">ランダム実力テスト（10問）</span>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-200 text-slate-700">シャッフル</span>
+            </div>
+            <p class="text-xs text-slate-600">全20問からランダムに10問を出題</p>
+          </button>
+        </div>
+
+        <div class="border-t border-slate-100 pt-4">
+          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">単元別に練習する（各5問）</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <button type="button" data-mode="unit13" class="mode-card text-left p-3.5 rounded-xl border border-slate-200 hover:border-sky-400 hover:bg-sky-50/40 transition">
+              <span class="inline-block text-xs font-bold text-sky-700 mb-0.5">13 動詞(1)</span>
+              <div class="font-semibold text-sm text-slate-900">動詞とは・活用形・活用の種類</div>
+            </button>
+            <button type="button" data-mode="unit14" class="mode-card text-left p-3.5 rounded-xl border border-slate-200 hover:border-emerald-400 hover:bg-emerald-50/40 transition">
+              <span class="inline-block text-xs font-bold text-emerald-700 mb-0.5">14 動詞(2)</span>
+              <div class="font-semibold text-sm text-slate-900">五段活用と音便</div>
+            </button>
+            <button type="button" data-mode="unit15" class="mode-card text-left p-3.5 rounded-xl border border-slate-200 hover:border-violet-400 hover:bg-violet-50/40 transition">
+              <span class="inline-block text-xs font-bold text-violet-700 mb-0.5">15 動詞(3)</span>
+              <div class="font-semibold text-sm text-slate-900">上一段・下一段・カ変・サ変</div>
+            </button>
+            <button type="button" data-mode="unit16" class="mode-card text-left p-3.5 rounded-xl border border-slate-200 hover:border-rose-400 hover:bg-rose-50/40 transition">
+              <span class="inline-block text-xs font-bold text-rose-700 mb-0.5">16 動詞(4)</span>
+              <div class="font-semibold text-sm text-slate-900">自他・可能動詞・補助動詞</div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Reference Accordion -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+        <button id="toggleCheatSheetBtn" type="button" class="w-full flex items-center justify-between text-left">
+          <div>
+            <h3 class="font-bold text-slate-900 text-sm sm:text-base">解く前に確認！活用の見分け方メモ</h3>
+            <p class="text-xs text-slate-500 mt-0.5">「ない」を付けて直前の音をチェックするのが基本</p>
+          </div>
+          <span id="cheatSheetArrow" class="text-slate-400 font-bold text-lg transition-transform">＋</span>
+        </button>
+        <div id="cheatSheetBody" class="hidden mt-4 pt-4 border-t border-slate-100 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
+          <div class="p-3 rounded-xl bg-amber-50/70 border border-amber-200/70">
+            <div class="font-bold text-amber-900 mb-1">五段活用</div>
+            <p class="text-slate-700">「ない」の上が<strong>ア段</strong>（書<strong>か</strong>ない・走<strong>ら</strong>ない）。音便が起こるのは五段だけ！</p>
+          </div>
+          <div class="p-3 rounded-xl bg-sky-50/70 border border-sky-200/70">
+            <div class="font-bold text-sky-900 mb-1">上一段・下一段活用</div>
+            <p class="text-slate-700">上一段：「ない」の上が<strong>イ段</strong>（起<strong>き</strong>ない）。<br />下一段：「ない」の上が<strong>エ段</strong>（受<strong>け</strong>ない）。</p>
+          </div>
+          <div class="p-3 rounded-xl bg-violet-50/70 border border-violet-200/70">
+            <div class="font-bold text-violet-900 mb-1">カ変・サ変</div>
+            <p class="text-slate-700">カ変は<strong>「来る」</strong>1語のみ。<br />サ変は<strong>「する」</strong>と<strong>「〜する」</strong>（運動する等）。</p>
+          </div>
+          <div class="p-3 rounded-xl bg-rose-50/70 border border-rose-200/70">
+            <div class="font-bold text-rose-900 mb-1">自動詞・他動詞・可能動詞</div>
+            <p class="text-slate-700">「何を」が必要なら<strong>他動詞</strong>。可能動詞は五段活用からできる下一段動詞（命令形なし）。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz Screen -->
+    <section id="quizScreen" class="hidden fade-in space-y-5">
+      <!-- Progress Bar -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
+        <div class="flex items-center justify-between text-xs sm:text-sm mb-2">
+          <div class="flex items-center gap-2">
+            <span id="unitBadge" class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-sky-100 text-sky-800">13 動詞(1)</span>
+            <span id="questionCounter" class="font-semibold text-slate-700">第 1 問 / 20</span>
+          </div>
+          <div class="font-semibold text-slate-600">
+            正解数: <span id="scoreDisplay" class="text-amber-600 font-bold">0</span>
+          </div>
+        </div>
+        <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+          <div id="progressBar" class="h-full bg-amber-500 rounded-full transition-all duration-300" style="width: 5%"></div>
+        </div>
+      </div>
+
+      <!-- Question Card -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-7 shadow-sm space-y-5">
+        <div>
+          <h2 id="questionText" class="text-lg sm:text-xl font-bold text-slate-900 leading-relaxed"></h2>
+          <p id="questionSub" class="hidden mt-2 text-sm text-slate-600 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5"></p>
+        </div>
+
+        <div id="optionsContainer" class="space-y-2.5"></div>
+
+        <!-- Feedback Box -->
+        <div id="feedbackBox" class="hidden fade-in rounded-xl p-4 border">
+          <div class="flex items-center gap-2 mb-1.5">
+            <span id="feedbackIcon" class="text-lg font-bold"></span>
+            <span id="feedbackTitle" class="font-bold text-sm sm:text-base"></span>
+          </div>
+          <p id="feedbackText" class="text-sm text-slate-700 leading-relaxed"></p>
+          <div class="mt-4 flex justify-end">
+            <button id="nextBtn" type="button" class="px-5 py-2.5 rounded-xl bg-slate-900 text-white text-sm font-semibold hover:bg-slate-800 transition">
+              次の問題へ →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Result Screen -->
+    <section id="resultScreen" class="hidden fade-in space-y-6">
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm text-center">
+        <div id="resultBadge" class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-amber-100 text-amber-700 text-2xl font-bold mb-3"></div>
+        <h2 id="resultHeadline" class="text-2xl font-bold text-slate-900 mb-1"></h2>
+        <p id="resultSubtext" class="text-sm text-slate-600 mb-6"></p>
+
+        <div class="inline-flex items-baseline gap-2 bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4 mb-6">
+          <span id="finalScore" class="text-4xl font-extrabold text-amber-600">0</span>
+          <span class="text-slate-500 font-semibold">/ <span id="finalTotal">20</span> 問正解</span>
+          <span id="finalRate" class="ml-2 text-sm font-bold px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800">0%</span>
+        </div>
+
+        <div id="unitBreakdown" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-left mb-6"></div>
+
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <button id="retryWrongBtn" type="button" class="hidden px-5 py-2.5 rounded-xl bg-rose-600 text-white text-sm font-semibold hover:bg-rose-700 transition">
+            間違えた問題だけ解き直す
+          </button>
+          <button id="retrySameBtn" type="button" class="px-5 py-2.5 rounded-xl bg-amber-500 text-white text-sm font-semibold hover:bg-amber-600 transition">
+            もう一度挑戦する
+          </button>
+          <button id="backToMenuBtn" type="button" class="px-5 py-2.5 rounded-xl border border-slate-200 text-slate-700 text-sm font-semibold hover:bg-slate-100 transition">
+            コース選択へ戻る
+          </button>
+        </div>
+      </div>
+
+      <!-- Review List -->
+      <div id="reviewSection" class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4">
+        <h3 class="font-bold text-slate-900 text-base sm:text-lg">解答と解説の振り返り</h3>
+        <div id="reviewList" class="space-y-3"></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const QUESTIONS = [
+      // 13 動詞(1)
+      {
+        id: 1,
+        unit: 'unit13',
+        unitLabel: '13 動詞(1)',
+        question: '動詞の基本形（終止形）は、必ず五十音図の何段の音で言い切りますか？',
+        options: ['ア段', 'イ段', 'ウ段', 'エ段'],
+        answer: 2,
+        explanation: '動詞は物事の動作・作用・存在を表し、必ず「ウ段」の音で言い切る自立語（活用あり）です。例：「着る」「書く」「降る」「ある」。'
+      },
+      {
+        id: 2,
+        unit: 'unit13',
+        unitLabel: '13 動詞(1)',
+        question: '動詞・形容詞・形容動詞をまとめて何といいますか？',
+        options: ['体言', '用言', '修飾語', '付属語'],
+        answer: 1,
+        explanation: '自立語で活用があり、それだけで述語になることができる「動詞・形容詞・形容動詞」を合わせて「用言」といいます。'
+      },
+      {
+        id: 3,
+        unit: 'unit13',
+        unitLabel: '13 動詞(1)',
+        question: '「遊ぶ」の活用で、変化しない部分「遊」を何といいますか？',
+        options: ['活用語尾', '語幹', '連用形', '終止形'],
+        answer: 1,
+        explanation: '活用する語で、変化しない部分を「語幹」、変化する部分（ば・び・ぶ・べ・ぼ）を「活用語尾」といいます。'
+      },
+      {
+        id: 4,
+        unit: 'unit13',
+        unitLabel: '13 動詞(1)',
+        question: '次のうち、動詞「書く」が「連体形」になっているものはどれですか？',
+        options: ['手紙を書かない', '字を書きます', '日記を書くとき', '早く書けばよい'],
+        answer: 2,
+        explanation: '「とき」「こと」「の」など（体言）に続く形が「連体形」です。「書かない」は未然形、「書きます」は連用形、「書けば」は仮定形です。'
+      },
+      {
+        id: 5,
+        unit: 'unit13',
+        unitLabel: '13 動詞(1)',
+        question: '「ある」「いる」は、動詞の働きのうち主にどれを表しますか？',
+        options: ['動作（どうする）', '作用（どうなる）', '存在（ある）', '命令（しろ）'],
+        answer: 2,
+        explanation: '「机がある」「犬がいる」のように、「ある」「いる」は存在を表します。ちなみに「落ちる」「降る」は作用、「着る」「書く」は動作です。'
+      },
+
+      // 14 動詞(2)
+      {
+        id: 6,
+        unit: 'unit14',
+        unitLabel: '14 動詞(2)',
+        question: '動詞に「ない」を付けてみたとき、「ない」の直前が何段の音になれば「五段活用」ですか？',
+        options: ['ア段の音', 'イ段の音', 'ウ段の音', 'エ段の音'],
+        answer: 0,
+        explanation: '「書かない（か＝ア段）」「運ばない（ば＝ア段）」のように、「ない」の上がア段の音なら五段活用です。'
+      },
+      {
+        id: 7,
+        unit: 'unit14',
+        unitLabel: '14 動詞(2)',
+        question: '動詞「走る」は何行何段活用ですか？',
+        options: ['ラ行上一段活用', 'ラ行下一段活用', 'ラ行五段活用', 'カ行変格活用'],
+        answer: 2,
+        explanation: '「走らない・走ります・走る・走るとき・走れば・走れ」とラ行の五段にわたって変化するので「ラ行五段活用」です。'
+      },
+      {
+        id: 8,
+        unit: 'unit14',
+        unitLabel: '14 動詞(2)',
+        question: '「泣く」＋「て」が「泣いて」に変化するような音便を何といいますか？',
+        options: ['促音便（そくおんびん）', '撥音便（はつおんびん）', 'イ音便', 'ウ音便'],
+        answer: 2,
+        explanation: '「泣き＋て → 泣いて」のように音が「い」に変わるのがイ音便です。動詞の音便は五段活用の動詞だけに起こります。'
+      },
+      {
+        id: 9,
+        unit: 'unit14',
+        unitLabel: '14 動詞(2)',
+        question: '「走った」「走って」のように、つまる音「っ」に変わる音便を何といいますか？',
+        options: ['イ音便', '促音便', '撥音便', '鼻音便'],
+        answer: 1,
+        explanation: 'つまる音「っ」になるのが「促音便」です。ちなみに「読んだ」のようにはねる音「ん」になるのは「撥音便」です。'
+      },
+      {
+        id: 10,
+        unit: 'unit14',
+        unitLabel: '14 動詞(2)',
+        question: '次のうち、「撥音便（はつおんびん）」を起こしているものはどれですか？',
+        options: ['本を読んだ', '外で遊ぼう', '鳥が飛ぶ', '速く走った'],
+        answer: 0,
+        explanation: '「読み＋た → 読んだ」のように、連用形に「た(だ)・て(で)・ても(でも)」が付いて「ん」に変化するのが撥音便です。'
+      },
+
+      // 15 動詞(3)
+      {
+        id: 11,
+        unit: 'unit15',
+        unitLabel: '15 動詞(3)',
+        question: '「信じる」の活用の種類として正しいものはどれですか？',
+        options: ['ザ行五段活用', 'ザ行上一段活用', 'ザ行下一段活用', 'サ行変格活用'],
+        answer: 1,
+        explanation: '「信じない（じ＝イ段）」となり、イ段の音「じ」だけで活用するため「ザ行上一段活用」です。'
+      },
+      {
+        id: 12,
+        unit: 'unit15',
+        unitLabel: '15 動詞(3)',
+        question: '「助ける」の活用の種類として正しいものはどれですか？',
+        options: ['カ行五段活用', 'カ行上一段活用', 'カ行下一段活用', 'カ行変格活用'],
+        answer: 2,
+        explanation: '「助けない（け＝エ段）」となり、エ段の音「け」だけで活用するため「カ行下一段活用」です。'
+      },
+      {
+        id: 13,
+        unit: 'unit15',
+        unitLabel: '15 動詞(3)',
+        question: '次のうち、「語幹と語尾の区別がない」動詞の組み合わせはどれですか？',
+        options: ['書く・飲む', '信じる・助ける', '見る・出る・来る', '走る・遊ぶ'],
+        answer: 2,
+        explanation: '「見る・着る・似る」（上一段）、「出る・寝る・得る」（下一段）や「来る」（カ変）、「する」（サ変）は語幹と語尾の区別がありません。'
+      },
+      {
+        id: 14,
+        unit: 'unit15',
+        unitLabel: '15 動詞(3)',
+        question: 'カ行変格活用（カ変）にあてはまる動詞はどれですか？',
+        options: ['「来る」一語だけ', '「行く」と「来る」', '「切る」と「着る」', '「聞く」などのカ行の動詞'],
+        answer: 0,
+        explanation: 'カ行変格活用は「来る（こ・き・く・く・くれ・こい）」の一語だけです。'
+      },
+      {
+        id: 15,
+        unit: 'unit15',
+        unitLabel: '15 動詞(3)',
+        question: '次のうち、サ行変格活用（サ変）の活用をするものはどれですか？',
+        options: ['押す', '探す', '運動する', '返す'],
+        answer: 2,
+        explanation: 'サ変は「する」一語のほか、「運動する」「うわさする」「クリックする」のような「〜する」の形の複合動詞も同じ活用をします。'
+      },
+
+      // 16 動詞(4)
+      {
+        id: 16,
+        unit: 'unit16',
+        unitLabel: '16 動詞(4)',
+        question: '次の文の動詞のうち、「他動詞」が使われているものはどれですか？',
+        options: ['木が倒れる。', '歯が抜ける。', '戸を開ける。', '風が吹く。'],
+        answer: 2,
+        explanation: '「何を」という動作の対象（「〜を」）を必要とするのが他動詞です。「戸を開ける」は「戸を」があるため他動詞。他は自動詞です。'
+      },
+      {
+        id: 17,
+        unit: 'unit16',
+        unitLabel: '16 動詞(4)',
+        question: '「風が吹く」と「笛を吹く」のように、同じ形でも使われ方で自動詞・他動詞の両方になるものがあります。この2つの正しい組み合わせは？',
+        options: [
+          '風が吹く（自動詞）／ 笛を吹く（他動詞）',
+          '風が吹く（他動詞）／ 笛を吹く（自動詞）',
+          '両方とも自動詞',
+          '両方とも他動詞'
+        ],
+        answer: 0,
+        explanation: '「風が吹く」は「何を」が不要なので自動詞、「笛を吹く」は「笛を」という対象があるので他動詞です。'
+      },
+      {
+        id: 18,
+        unit: 'unit16',
+        unitLabel: '16 動詞(4)',
+        question: '「泳げる」「書ける」などの「可能動詞」について、正しい説明はどれですか？',
+        options: [
+          '上一段活用の動詞で、命令形がある',
+          '五段活用をもとにした下一段活用で、命令形がない',
+          'すべての動詞（見る・出る・来るなど）から作れる',
+          '必ず「〜を」を必要とする他動詞である'
+        ],
+        answer: 1,
+        explanation: '可能動詞は五段活用の動詞をもとにしてできた下一段活用の動詞で、命令形がありません。'
+      },
+      {
+        id: 19,
+        unit: 'unit16',
+        unitLabel: '16 動詞(4)',
+        question: '次のうち、文法上の「可能動詞」ではない（五段活用から作られていない）ものはどれですか？',
+        options: ['泳げる', '書ける', '読める', '見れる'],
+        answer: 3,
+        explanation: '「見る」（上一段）・「出る」（下一段）・「来る」（カ変）は五段活用ではないため可能動詞を作れません。「見れる」「出れる」「来れる」は可能動詞ではありません。'
+      },
+      {
+        id: 20,
+        unit: 'unit16',
+        unitLabel: '16 動詞(4)',
+        question: '次の文のうち、下線部に相当する動詞が「補助動詞（形式動詞）」として使われているものはどれですか？',
+        options: [
+          'ここに原因が【ある】。',
+          'これが原因で【ある】。',
+          '彼はそこに【いく】。',
+          '明日、学校へ【いく】。'
+        ],
+        answer: 1,
+        explanation: '「これが原因である」の「ある」は「存在する」という実質的な意味をもたず、上の語「原因で」を補助しているため補助動詞です（同様に「歩いていく」の「いく」も補助動詞）。'
+      }
+    ];
+
+    const UNIT_NAMES = {
+      unit13: '13 動詞(1) 動詞とは・活用',
+      unit14: '14 動詞(2) 五段活用と音便',
+      unit15: '15 動詞(3) 上一段・下一段・カ変・サ変',
+      unit16: '16 動詞(4) 自他・可能・補助動詞'
+    };
+
+    const UNIT_COLORS = {
+      unit13: 'bg-sky-100 text-sky-800',
+      unit14: 'bg-emerald-100 text-emerald-800',
+      unit15: 'bg-violet-100 text-violet-800',
+      unit16: 'bg-rose-100 text-rose-800'
+    };
+
+    let currentMode = 'all';
+    let quizList = [];
+    let currentIndex = 0;
+    let score = 0;
+    let answered = false;
+    let userRecords = [];
+
+    const startScreen = document.getElementById('startScreen');
+    const quizScreen = document.getElementById('quizScreen');
+    const resultScreen = document.getElementById('resultScreen');
+    const homeBtn = document.getElementById('homeBtn');
+
+    const unitBadge = document.getElementById('unitBadge');
+    const questionCounter = document.getElementById('questionCounter');
+    const scoreDisplay = document.getElementById('scoreDisplay');
+    const progressBar = document.getElementById('progressBar');
+    const questionText = document.getElementById('questionText');
+    const questionSub = document.getElementById('questionSub');
+    const optionsContainer = document.getElementById('optionsContainer');
+    const feedbackBox = document.getElementById('feedbackBox');
+    const feedbackIcon = document.getElementById('feedbackIcon');
+    const feedbackTitle = document.getElementById('feedbackTitle');
+    const feedbackText = document.getElementById('feedbackText');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function shuffleArray(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function showScreen(screen) {
+      startScreen.classList.add('hidden');
+      quizScreen.classList.add('hidden');
+      resultScreen.classList.add('hidden');
+      screen.classList.remove('hidden');
+      if (screen === startScreen) {
+        homeBtn.classList.add('hidden');
+      } else {
+        homeBtn.classList.remove('hidden');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function startQuiz(mode, customList = null) {
+      currentMode = mode;
+      if (customList) {
+        quizList = customList;
+      } else if (mode === 'all') {
+        quizList = [...QUESTIONS];
+      } else if (mode === 'random10') {
+        quizList = shuffleArray(QUESTIONS).slice(0, 10);
+      } else {
+        quizList = QUESTIONS.filter((q) => q.unit === mode);
+      }
+
+      currentIndex = 0;
+      score = 0;
+      userRecords = [];
+      showScreen(quizScreen);
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      answered = false;
+      const q = quizList[currentIndex];
+      const total = quizList.length;
+
+      unitBadge.textContent = q.unitLabel;
+      unitBadge.className = `px-2.5 py-0.5 rounded-full text-xs font-bold ${UNIT_COLORS[q.unit] || 'bg-slate-100 text-slate-800'}`;
+      questionCounter.textContent = `第 ${currentIndex + 1} 問 / ${total}`;
+      scoreDisplay.textContent = String(score);
+      progressBar.style.width = `${Math.round(((currentIndex + 1) / total) * 100)}%`;
+
+      questionText.textContent = q.question;
+      questionSub.classList.add('hidden');
+
+      feedbackBox.classList.add('hidden');
+      optionsContainer.innerHTML = '';
+
+      const labels = ['ア', 'イ', 'ウ', 'エ'];
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'option-btn w-full text-left p-3.5 sm:p-4 rounded-xl border border-slate-200 bg-white hover:border-amber-400 hover:bg-amber-50/40 flex items-start gap-3';
+        btn.innerHTML = `
+          <span class="inline-flex items-center justify-center w-6 h-6 rounded-md bg-slate-100 text-slate-700 font-bold text-xs shrink-0 mt-0.5">${labels[idx]}</span>
+          <span class="text-sm sm:text-base font-medium text-slate-800 leading-snug">${opt}</span>
+        `;
+        btn.addEventListener('click', () => handleAnswer(idx));
+        optionsContainer.appendChild(btn);
+      });
+
+      nextBtn.textContent = currentIndex + 1 < total ? '次の問題へ →' : '結果を見る →';
+    }
+
+    function handleAnswer(selectedIdx) {
+      if (answered) return;
+      answered = true;
+
+      const q = quizList[currentIndex];
+      const isCorrect = selectedIdx === q.answer;
+      if (isCorrect) score += 1;
+      scoreDisplay.textContent = String(score);
+
+      userRecords.push({
+        questionObj: q,
+        selectedIdx,
+        isCorrect
+      });
+
+      const buttons = optionsContainer.querySelectorAll('button');
+      buttons.forEach((btn, idx) => {
+        btn.disabled = true;
+        btn.classList.remove('hover:border-amber-400', 'hover:bg-amber-50/40');
+        const badge = btn.querySelector('span:first-child');
+        if (idx === q.answer) {
+          btn.classList.remove('border-slate-200', 'bg-white');
+          btn.classList.add('border-emerald-500', 'bg-emerald-50');
+          badge.classList.remove('bg-slate-100', 'text-slate-700');
+          badge.classList.add('bg-emerald-500', 'text-white');
+        } else if (idx === selectedIdx && !isCorrect) {
+          btn.classList.remove('border-slate-200', 'bg-white');
+          btn.classList.add('border-rose-400', 'bg-rose-50');
+          badge.classList.remove('bg-slate-100', 'text-slate-700');
+          badge.classList.add('bg-rose-500', 'text-white');
+        } else {
+          btn.classList.add('opacity-60');
+        }
+      });
+
+      feedbackBox.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-200', 'bg-rose-50', 'border-rose-200');
+      if (isCorrect) {
+        feedbackBox.classList.add('bg-emerald-50', 'border-emerald-200');
+        feedbackIcon.textContent = '○';
+        feedbackIcon.className = 'text-lg font-bold text-emerald-600';
+        feedbackTitle.textContent = '正解！';
+        feedbackTitle.className = 'font-bold text-sm sm:text-base text-emerald-800';
+      } else {
+        const labels = ['ア', 'イ', 'ウ', 'エ'];
+        feedbackBox.classList.add('bg-rose-50', 'border-rose-200');
+        feedbackIcon.textContent = '×';
+        feedbackIcon.className = 'text-lg font-bold text-rose-600';
+        feedbackTitle.textContent = `惜しい！正解は「${labels[q.answer]}：${q.options[q.answer]}」`;
+        feedbackTitle.className = 'font-bold text-sm sm:text-base text-rose-800';
+      }
+      feedbackText.textContent = q.explanation;
+    }
+
+    function showResults() {
+      showScreen(resultScreen);
+      const total = quizList.length;
+      const rate = total > 0 ? Math.round((score / total) * 100) : 0;
+
+      document.getElementById('finalScore').textContent = String(score);
+      document.getElementById('finalTotal').textContent = String(total);
+      document.getElementById('finalRate').textContent = `${rate}%`;
+
+      const badge = document.getElementById('resultBadge');
+      const headline = document.getElementById('resultHeadline');
+      const subtext = document.getElementById('resultSubtext');
+
+      if (rate === 100) {
+        badge.textContent = '★';
+        headline.textContent = '全問正解！動詞マスターです！';
+        subtext.textContent = '活用の種類から音便・自他・可能動詞までバッチリ身についています。';
+      } else if (rate >= 80) {
+        badge.textContent = '◎';
+        headline.textContent = 'すばらしい成績です！';
+        subtext.textContent = 'あと少しで満点。間違えた箇所だけ復習して仕上げましょう。';
+      } else if (rate >= 50) {
+        badge.textContent = '○';
+        headline.textContent = 'ナイスチャレンジ！';
+        subtext.textContent = '「ない」を付けて活用を見分けるコツを意識すると正答率が上がります。';
+      } else {
+        badge.textContent = '△';
+        headline.textContent = '復習のチャンス！';
+        subtext.textContent = '解説を読み直して、単元別に1つずつ確認してみましょう。';
+      }
+
+      // Unit breakdown
+      const unitStats = {};
+      userRecords.forEach((rec) => {
+        const u = rec.questionObj.unit;
+        if (!unitStats[u]) unitStats[u] = { correct: 0, total: 0 };
+        unitStats[u].total += 1;
+        if (rec.isCorrect) unitStats[u].correct += 1;
+      });
+
+      const unitBreakdown = document.getElementById('unitBreakdown');
+      unitBreakdown.innerHTML = '';
+      Object.keys(unitStats).forEach((u) => {
+        const st = unitStats[u];
+        const uRate = Math.round((st.correct / st.total) * 100);
+        const card = document.createElement('div');
+        card.className = 'p-3 rounded-xl border border-slate-200 bg-slate-50 flex items-center justify-between gap-2';
+        card.innerHTML = `
+          <span class="text-xs sm:text-sm font-semibold text-slate-700">${UNIT_NAMES[u] || u}</span>
+          <span class="text-xs font-bold px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-800 shrink-0">${st.correct} / ${st.total} (${uRate}%)</span>
+        `;
+        unitBreakdown.appendChild(card);
+      });
+
+      // Retry wrong button
+      const wrongQuestions = userRecords.filter((r) => !r.isCorrect).map((r) => r.questionObj);
+      const retryWrongBtn = document.getElementById('retryWrongBtn');
+      if (wrongQuestions.length > 0) {
+        retryWrongBtn.classList.remove('hidden');
+        retryWrongBtn.textContent = `間違えた問題だけ解き直す（${wrongQuestions.length}問）`;
+        retryWrongBtn.onclick = () => startQuiz('wrong', wrongQuestions);
+      } else {
+        retryWrongBtn.classList.add('hidden');
+      }
+
+      // Review list
+      const reviewList = document.getElementById('reviewList');
+      reviewList.innerHTML = '';
+      const labels = ['ア', 'イ', 'ウ', 'エ'];
+      userRecords.forEach((rec, i) => {
+        const q = rec.questionObj;
+        const item = document.createElement('div');
+        item.className = `p-4 rounded-xl border ${rec.isCorrect ? 'border-emerald-200 bg-emerald-50/40' : 'border-rose-200 bg-rose-50/40'}`;
+        item.innerHTML = `
+          <div class="flex items-center justify-between gap-2 mb-1.5">
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-white border border-slate-200 text-slate-600">${q.unitLabel}</span>
+            <span class="text-xs font-bold ${rec.isCorrect ? 'text-emerald-700' : 'text-rose-700'}">${rec.isCorrect ? '○ 正解' : '× 不正解'}</span>
+          </div>
+          <p class="text-sm font-bold text-slate-900 mb-2">Q${i + 1}. ${q.question}</p>
+          <div class="text-xs space-y-1 mb-2">
+            ${!rec.isCorrect ? `<p class="text-rose-700">あなたの解答：${labels[rec.selectedIdx]}：${q.options[rec.selectedIdx]}</p>` : ''}
+            <p class="text-emerald-800 font-semibold">正解：${labels[q.answer]}：${q.options[q.answer]}</p>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed">${q.explanation}</p>
+        `;
+        reviewList.appendChild(item);
+      });
+    }
+
+    // Event Listeners
+    document.querySelectorAll('.mode-card').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const mode = btn.getAttribute('data-mode');
+        startQuiz(mode);
+      });
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentIndex + 1 < quizList.length) {
+        currentIndex += 1;
+        renderQuestion();
+      } else {
+        showResults();
+      }
+    });
+
+    homeBtn.addEventListener('click', () => showScreen(startScreen));
+    document.getElementById('backToMenuBtn').addEventListener('click', () => showScreen(startScreen));
+    document.getElementById('retrySameBtn').addEventListener('click', () => {
+      if (currentMode === 'wrong') {
+        startQuiz('wrong', quizList);
+      } else {
+        startQuiz(currentMode);
+      }
+    });
+
+    const toggleCheatSheetBtn = document.getElementById('toggleCheatSheetBtn');
+    const cheatSheetBody = document.getElementById('cheatSheetBody');
+    const cheatSheetArrow = document.getElementById('cheatSheetArrow');
+    toggleCheatSheetBtn.addEventListener('click', () => {
+      const isHidden = cheatSheetBody.classList.contains('hidden');
+      cheatSheetBody.classList.toggle('hidden');
+      cheatSheetArrow.textContent = isHidden ? '－' : '＋';
+    });
+  </script>
+</body>
+</html>
